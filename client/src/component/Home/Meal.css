@@ -1,0 +1,55 @@
+.mealCard {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: rgb(40, 40, 40);
+  margin: 2em;
+  transition: all 0.5s;
+  padding-bottom: 0.5em;
+}
+.mealCard > img {
+  width: 200px;
+}
+.mealCard > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.mealCard > div > span {
+  margin: 0.5vmax;
+  font: 300 13px "Roboto";
+}
+.mealCard > p {
+  font-family: "Roboto";
+  font-size: 18px;
+  margin: 1em 0.5em;
+  margin-bottom: 0;
+  text-align: start;
+}
+.mealCard > span {
+  margin: 0.5em 0.5em;
+  color: tomato;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1rem;
+}
+.mealCard:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+  transform: translateY(-1em);
+}
+@media screen and (max-width: 600px) {
+  .mealCard > p {
+    font-size: 12px;
+  }
+  .mealCard > div {
+    margin: 0;
+    display: block;
+  }
+  .mealCard > span {
+    font-size: 0.5rem;
+  }
+  .mealCard > div > span {
+    margin: 0 0.5vmax;
+    font: 300 12px "Roboto";
+  }
+}

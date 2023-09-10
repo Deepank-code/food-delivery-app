@@ -1,0 +1,87 @@
+/* scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffdfdf;
+  border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #eb5757;
+  border-radius: 20px;
+}
+
+.our-menu {
+  margin-top: 5em;
+  min-height: 100vh;
+}
+.our-menu > .sm-heading {
+  font-weight: 600;
+
+  letter-spacing: 3px;
+  color: #eb5757;
+}
+.our-menu h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: Bolder;
+  font-size: 45px;
+
+  width: 500px;
+
+  line-height: 60px;
+}
+.our-menu-child-div {
+  display: flex;
+}
+.left-scroll-section {
+  width: 30%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  overflow-y: scroll;
+}
+.right-crousel-section {
+  width: 70%;
+  height: 70%;
+}
+.left-scroll-section > h5 {
+  width: 254px;
+  min-height: 85px;
+  background-color: #eb5757;
+  border-radius: 40px;
+  margin: 1em 0px;
+  padding: 15px 20px;
+  font-weight: bolder;
+  color: white;
+}
+.sm-images {
+  padding: 10px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 1rem;
+  width: 50px;
+  height: 50px;
+}
+@media only screen and (max-width: 992px) {
+  .left-scroll-section {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .our-menu h2 {
+    width: 400px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .our-menu h2 {
+    width: 300px;
+  }
+}

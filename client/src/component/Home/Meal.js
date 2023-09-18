@@ -8,22 +8,19 @@ const Meal = ({ meal }) => {
     color: "rgba(20,20,20,0.1)",
     size: window.innerWidth < 600 ? 15 : 25,
     activeColor: "tomato",
-    value: 2.5,
+    value: meal.ratings,
     isHalf: true,
   };
+
   return (
-    <Link className="mealCard" to="{meal._id}">
-      <img
-        src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?cs=srgb&dl=pexels-chan-walrus-958545.jpg&fm=jpg"
-        width="200px"
-        alt="{meal.name}"
-      />
-      <p>Birayani</p>
+    <Link className="mealCard" to={`food/meal/${meal._id}`}>
+      <img src={meal.images[0].secure_url} width="200px" alt="{meal.name}" />
+      <p>{meal.name}</p>
       <div>
         <ReactStars {...options} />
-        <span>544 reviews</span>
+        <span>{`${meal.reviews.length} reviews`}</span>
       </div>
-      <span>3242</span>
+      <span>{`RS ${meal.price}`}</span>
     </Link>
   );
 };

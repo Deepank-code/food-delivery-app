@@ -49,7 +49,11 @@
 }
 .right-crousel-section {
   width: 70%;
-  height: 70%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .left-scroll-section > h5 {
   width: 254px;
@@ -72,6 +76,14 @@
 @media only screen and (max-width: 992px) {
   .left-scroll-section {
     display: none;
+  }
+  .right-crousel-section {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+
+    flex-wrap: wrap;
   }
 }
 

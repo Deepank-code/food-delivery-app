@@ -5,6 +5,8 @@ import { Home } from "./component/Home/Home.js";
 import { useEffect } from "react";
 import WebFont from "webfontloader";
 import Footer from "./component/layout/Footer/Footer";
+import MealDetails from "./component/Meal/MealDetails";
+import Meals from "../src/component/Meal/Meals.js";
 
 function App() {
   useEffect(() => {
@@ -20,6 +22,8 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/" Component={Home} />
+          <Route exact path="food/meal/:id" Component={MealDetails} />
+          <Route exact path="meals" Component={Meals} />
         </Routes>
         <Footer />
       </Router>

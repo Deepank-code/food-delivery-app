@@ -91,7 +91,7 @@ const getMealDetails = async (req, res, next) => {
 //create or update review
 const createMealReview = async (req, res, next) => {
   const { rating, comment, mealid } = req.body;
-
+  console.log(req.user);
   try {
     const review = {
       user: req.user.id,
@@ -128,6 +128,7 @@ const createMealReview = async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: "Review is successfully added!!",
+      review,
     });
   } catch (error) {
     return next(new AppError(error.message, 500));

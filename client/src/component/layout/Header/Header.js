@@ -1,11 +1,11 @@
 import "./Header.css";
-
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <nav class="navbar navbar-expand-lg ">
-      <div class="container-fluid">
+    <nav className="navbar navbar-expand-lg ">
+      <div className="container-fluid">
         <div className="logo-div">
-          <a class="navbar-brand " href="#">
+          <a className="navbar-brand " href="#">
             <img
               className="logo-img"
               src="https://w7.pngwing.com/pngs/894/279/png-transparent-online-food-ordering-food-delivery-grubhub-others-food-service-logo-thumbnail.png"
@@ -15,7 +15,7 @@ const Header = () => {
         </div>
 
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
@@ -23,29 +23,29 @@ const Header = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse " id="navbarNavDropdown">
+        <div className="collapse navbar-collapse " id="navbarNavDropdown">
           <div className="links d-flex justify-content-space-between">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/">
                   Home
-                </a>
+                </Link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Features
-                </a>
+              <li className="nav-item">
+                <Link className="nav-link" to="/meals">
+                  Meals
+                </Link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+              <li className="nav-item">
+                <a className="nav-link" href="#">
                   Pricing
                 </a>
               </li>
-              <li class="nav-item dropdown">
+              <li className="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle"
                   href="#"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -53,19 +53,19 @@ const Header = () => {
                 >
                   Dropdown link
                 </a>
-                <ul class="dropdown-menu">
+                <ul className="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" href="#">
                       Action
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" href="#">
                       Another action
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" href="#">
                       Something else here
                     </a>
                   </li>
@@ -74,8 +74,7 @@ const Header = () => {
             </ul>
             <div className="buttons">
               <a className="btn login-btn">
-                {" "}
-                <i class="fa-solid fa-right-to-bracket me-2"></i>Login
+                <i className="fa-solid fa-right-to-bracket me-2"></i>Login
               </a>
             </div>
           </div>

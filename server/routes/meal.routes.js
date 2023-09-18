@@ -27,7 +27,8 @@ router
   .route("/meal/:id")
   .put(isLoggedin, authorizedRoles("ADMIN"), updateMeal)
   .delete(isLoggedin, authorizedRoles("ADMIN"), deleteMeal)
-  .get(isLoggedin, authorizedRoles("ADMIN"), getMealDetails);
+  // .get(isLoggedin, authorizedRoles("ADMIN"), getMealDetails);
+  .get(getMealDetails);
 
 router.route("/review").put(isLoggedin, createMealReview);
 

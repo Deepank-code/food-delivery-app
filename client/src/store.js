@@ -2,10 +2,11 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 import { composeWithDevTools } from "redux-devtools-extension";
-import mealReducer from "./reducers/mealReducers";
+import { mealReducer, mealDetailReducer } from "./reducers/mealReducers";
 
 const reducer = combineReducers({
   meals: mealReducer,
+  mealDetail: mealDetailReducer,
 });
 
 let initalState = {};

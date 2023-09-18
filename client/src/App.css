@@ -2,8 +2,20 @@
   margin: 0%;
   padding: 0%;
   font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
 }
 html,
 body {
   height: 100%;
+}
+input ::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.greenColor {
+  color: green;
+}
+.redColor {
+  color: red;
 }

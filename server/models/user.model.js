@@ -56,6 +56,7 @@ userSchema.methods = {
     return await jwt.sign(
       {
         id: this._id,
+        name: this.fullName,
         email: this.email,
         subscription: this.subscription,
         role: this.role,

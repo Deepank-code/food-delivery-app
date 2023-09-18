@@ -7,9 +7,11 @@
   margin: 2em;
   transition: all 0.5s;
   padding-bottom: 0.5em;
+  border-radius: 20px;
 }
 .mealCard > img {
   width: 200px;
+  border-radius: 20px 20px 0 0;
 }
 .mealCard > div {
   display: flex;

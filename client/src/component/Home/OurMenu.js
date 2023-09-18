@@ -3,6 +3,7 @@ import "./ourmenu.css";
 import { getMeals } from "../../actions/mealAction";
 import { useSelector, useDispatch } from "react-redux";
 import Meal from "./Meal";
+import Loader from "../layout/Loader/Loader";
 
 const OurMenu = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const OurMenu = () => {
   useEffect(() => {
     dispatch(getMeals());
   }, [dispatch]);
+  console.log(meals);
   return (
     <div className="our-menu">
       <h5 className="py-4 sm-heading">OUR MENU</h5>
@@ -76,7 +78,14 @@ const OurMenu = () => {
           </h5>
         </div>
         <div className="right-crousel-section">
-          <Meal />
+          {loading ? (
+            <Loader className="d-flex justify-content-center align-items-center" />
+          ) : (
+            meals &&
+            meals.map((meal) => {
+              return <Meal meal={meal} key={meal._id} />;
+            })
+          )}
         </div>
       </div>
     </div>

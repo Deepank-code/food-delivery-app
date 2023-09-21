@@ -9,22 +9,25 @@ import {
   MEAL_DETAIL_FAIL,
 } from "../constant/mealConstant.js";
 
-export const getMeals = () => async (dispatch) => {
-  try {
-    dispatch({ type: ALL_MEAL_REQUEST });
-    const { data } = await axios.get("/api/v1/food/meals");
+export const getMeals =
+  (keyword = "") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: ALL_MEAL_REQUEST });
+      let link = `/api/v1/food/meals?keyword=${keyword}`;
+      const { data } = await axios.get(link);
 
-    dispatch({
-      type: ALL_MEAL_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: ALL_MEAL_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
+      dispatch({
+        type: ALL_MEAL_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: ALL_MEAL_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
 export const getMealDetail = (id) => async (dispatch) => {
   try {
     dispatch({ type: MEAL_DETAIL_REQUEST });

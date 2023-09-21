@@ -1,0 +1,46 @@
+.blurred-box {
+  width: 100%;
+  height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1981&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchBox {
+  padding: 9em;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.3px);
+  -webkit-backdrop-filter: blur(4.3px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+.searchBox > input[type="text"] {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.274);
+  background-color: rgb(255, 255, 175);
+  border: none;
+  border-radius: 0%;
+  padding: 1em 2em;
+  width: 500px;
+  outline: none;
+  font: 300 1em cursive;
+  box-sizing: border-box;
+  height: 8%;
+}
+.searchBox > input[type="submit"] {
+  height: 8%;
+  border-radius: 0%;
+  background-color: #eb5757;
+  border: none;
+  padding: 1em;
+  width: 100px;
+  font: 300 1em "Roboto";
+  color: white;
+  cursor: pointer;
+}
+.mealSearchinput {
+  padding: 3em 1em;
+}

@@ -3,7 +3,7 @@ import AppError from "../utils/error.util.js";
 import ApiFeatures from "../utils/apifeatures.js";
 
 const getAllMeals = async (req, res, next) => {
-  const resultPerPage = 5;
+  const resultPerPage = 10;
   const mealCount = await Meal.countDocuments();
   const apifeatures = new ApiFeatures(Meal.find({}), req.query)
     .search()

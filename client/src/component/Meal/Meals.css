@@ -1,0 +1,14 @@
+.mealsHeading {
+  margin: 2em auto;
+  text-align: center;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.171);
+  font: 600 2em "Roboto";
+  width: 200px;
+  padding-bottom: 0.5em;
+}
+.meals {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 2em;
+  justify-content: center;
+}

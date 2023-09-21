@@ -39,9 +39,9 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Pricing
-                </a>
+                <Link className="nav-link" to="/search">
+                  Search
+                </Link>
               </li>
               <li className="nav-item dropdown">
                 <a

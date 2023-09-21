@@ -7,6 +7,7 @@ import WebFont from "webfontloader";
 import Footer from "./component/layout/Footer/Footer";
 import MealDetails from "./component/Meal/MealDetails";
 import Meals from "../src/component/Meal/Meals.js";
+import Search from "./component/Meal/Search";
 
 function App() {
   useEffect(() => {
@@ -24,6 +25,8 @@ function App() {
           <Route exact path="/" Component={Home} />
           <Route exact path="food/meal/:id" Component={MealDetails} />
           <Route exact path="meals" Component={Meals} />
+          <Route exact path="search" Component={Search} />
+          <Route exact path="meals/:keyword" Component={Meals} />
         </Routes>
         <Footer />
       </Router>

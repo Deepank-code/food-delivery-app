@@ -5,6 +5,7 @@ import Loader from "../layout/Loader/Loader";
 import Meal from "../Home/Meal";
 import "./Meals.css";
 import { useParams } from "react-router-dom";
+// import Pagination from "react-js-pagination";
 
 const Meals = () => {
   const dispatch = useDispatch();
@@ -12,10 +13,11 @@ const Meals = () => {
     (state) => state.meals
   );
   const keyword = useParams();
+  console.log(keyword);
   useEffect(() => {
     dispatch(getMeals(keyword));
   }, [dispatch, keyword]);
-  console.log(meals);
+
   return (
     <>
       {loading ? (

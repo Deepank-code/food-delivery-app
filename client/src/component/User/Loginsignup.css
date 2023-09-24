@@ -1,0 +1,131 @@
+.loginSignupContainer {
+  width: 100%;
+  height: 100vh;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.loginSignupBox {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.23);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.1px);
+  -webkit-backdrop-filter: blur(4.1px);
+  border: 1px solid rgba(255, 255, 255, 0.64);
+  width: 400px;
+  height: 400px;
+  padding: 1em 3em;
+  overflow: hidden;
+}
+
+.login_signup_toggle {
+  margin-top: 1em;
+  display: flex;
+  height: 30px;
+}
+
+.login_signup_toggle > p {
+  color: rgba(0, 0, 0, 0.697);
+  font: 500 1.2em "Roboto";
+  transition: all 0.5s;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+.login_signup_toggle > p:hover {
+  color: #eb5757;
+}
+.loginSignupBox > div > button {
+  background-color: tomato;
+  height: 3px;
+  width: 50%;
+  border: none;
+  transition: all 0.5s;
+}
+
+.loginForm,
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 70%;
+  margin: auto;
+}
+.signupForm {
+  transform: translateY(-100%) translateX(-100vmax);
+}
+
+.loginForm > div,
+.signupForm > div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.loginForm > div > input,
+.signupForm > div > input {
+  padding: 0.6em 2.5em;
+  padding-right: 1em;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.256);
+  border-radius: 4px;
+}
+.loginForm > div > svg,
+.signupForm > div > svg {
+  position: absolute;
+  transform: translateX(0.4em);
+  color: rgba(0, 0, 0, 0.652);
+}
+.loginForm > a {
+  color: rgba(0, 0, 0, 651);
+  text-decoration: none;
+  align-self: flex-end;
+  transition: all 0.5s;
+}
+.loginForm > a:hover {
+  color: black;
+}
+.loginBtn,
+.signUpBtn {
+  border: none;
+  background-color: #eb5757;
+  color: white;
+  font: 300 1em "Roboto";
+  width: 100%;
+  padding: 0.5em;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+}
+.loginBtn:hover,
+.signupbtn:hover {
+  background-color: #fd4040;
+  transform: scale(1.03);
+}
+.shiftToLeft {
+  transform: translateX(-120%);
+}
+.shiftToNeutral {
+  transform: translateX(0%);
+}
+.shiftToNeutralForm {
+  transform: translateX(0%) translateY(-100%);
+}
+.shiftToRight {
+  transform: translateX(100%);
+}
+
+.registerImg > img {
+  width: 50px;
+  margin-right: 10px;
+}

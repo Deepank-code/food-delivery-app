@@ -73,9 +73,9 @@ const Header = () => {
               </li>
             </ul>
             <div className="buttons">
-              <a className="btn login-btn">
+              <Link className="btn login-btn" to="/login">
                 <i className="fa-solid fa-right-to-bracket me-2"></i>Login
-              </a>
+              </Link>
             </div>
           </div>
         </div>

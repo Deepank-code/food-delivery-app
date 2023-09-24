@@ -8,6 +8,7 @@ import Footer from "./component/layout/Footer/Footer";
 import MealDetails from "./component/Meal/MealDetails";
 import Meals from "../src/component/Meal/Meals.js";
 import Search from "./component/Meal/Search";
+import LoginSignup from "./component/User/LoginSignup";
 
 function App() {
   useEffect(() => {
@@ -23,10 +24,12 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/" Component={Home} />
-          <Route exact path="food/meal/:id" Component={MealDetails} />
-          <Route exact path="meals" Component={Meals} />
-          <Route exact path="search" Component={Search} />
-          <Route exact path="meals/:keyword" Component={Meals} />
+          <Route exact path="/food/meal/:id" Component={MealDetails} />
+          <Route exact path="/meals" Component={Meals} />
+          <Route path="/meals/:keyword" Component={Meals} />
+
+          <Route exact path="/search" Component={Search} />
+          <Route exact path="login" Component={LoginSignup} />
         </Routes>
         <Footer />
       </Router>

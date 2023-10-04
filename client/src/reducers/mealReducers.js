@@ -20,6 +20,8 @@ const mealReducer = (state = { meals: [] }, action) => {
         loading: false,
         meals: action.payload.allMeals,
         mealsCount: action.payload.mealCount,
+        resultPerPage: action.payload.resultPerPage,
+        filteredmealsCount: action.payload.filteredmealsCount,
       };
     case ALL_MEAL_FAIL:
       return {

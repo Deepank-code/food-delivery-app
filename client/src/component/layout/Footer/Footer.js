@@ -2,7 +2,7 @@ import React from "react";
 import "./Footer.css";
 const Footer = () => {
   return (
-    <div className="my-5" id="footer ">
+    <div className="my-5 hide-footer" id="footer">
       <div className="footer-container d-flex justify-content-around align-items-center">
         <div className="section-1">
           <div className="d-flex">

@@ -10,11 +10,14 @@ import {
 } from "../constant/mealConstant.js";
 
 export const getMeals =
-  (keyword = "") =>
+  (keyword = "", currentPage = 1, price = [20, 3000], category) =>
   async (dispatch) => {
     try {
       dispatch({ type: ALL_MEAL_REQUEST });
-      let link = `/api/v1/food/meals?keyword=${keyword}`;
+      let link = `/api/v1/food/meals?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
+      if (category) {
+        link = `/api/v1/food/meals?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}`;
+      }
       const { data } = await axios.get(link);
 
       dispatch({

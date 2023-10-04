@@ -13,7 +13,7 @@ const Meal = ({ meal }) => {
   };
 
   return (
-    <Link className="mealCard" to={`food/meal/${meal._id}`}>
+    <Link className="mealCard" to={`/meal/${meal._id}`}>
       <img src={meal.images[0].secure_url} width="200px" alt="{meal.name}" />
       <p>{meal.name}</p>
       <div>

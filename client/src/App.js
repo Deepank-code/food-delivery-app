@@ -9,6 +9,11 @@ import MealDetails from "./component/Meal/MealDetails";
 import Meals from "../src/component/Meal/Meals.js";
 import Search from "./component/Meal/Search";
 import LoginSignup from "./component/User/LoginSignup";
+import store from "./store";
+import { loaduser } from "./actions/userAction";
+import UserOptions from "./component/layout/Header/UserOptions.js";
+import Profile from "./component/User/Profile.js";
+import ProtectedRoute from "./component/Route/ProtectedRoute";
 
 function App() {
   useEffect(() => {
@@ -17,19 +22,21 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
-  });
+    store.dispatch(loaduser());
+  }, []);
   return (
     <>
       <Router>
         <Header />
         <Routes>
           <Route exact path="/" Component={Home} />
-          <Route exact path="/food/meal/:id" Component={MealDetails} />
+          <Route path="/meal/:id" Component={MealDetails} />
           <Route exact path="/meals" Component={Meals} />
           <Route path="/meals/:keyword" Component={Meals} />
 
           <Route exact path="/search" Component={Search} />
-          <Route exact path="login" Component={LoginSignup} />
+          <Route exact path="/account" Component={Profile} />
+          <Route exact path="/login" Component={LoginSignup} />
         </Routes>
         <Footer />
       </Router>

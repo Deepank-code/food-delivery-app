@@ -1,6 +1,11 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import UserOptions from "./UserOptions";
+
 const Header = () => {
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+
   return (
     <nav className="navbar navbar-expand-lg ">
       <div className="container-fluid">
@@ -72,11 +77,16 @@ const Header = () => {
                 </ul>
               </li>
             </ul>
-            <div className="buttons">
-              <Link className="btn login-btn" to="/login">
-                <i className="fa-solid fa-right-to-bracket me-2"></i>Login
-              </Link>
-            </div>
+
+            {isAuthenticated ? (
+              <UserOptions user={user} />
+            ) : (
+              <div className="buttons">
+                <Link className="btn login-btn" to="/login">
+                  <i className="fa-solid fa-right-to-bracket me-2"></i>Login
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

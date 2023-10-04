@@ -7,7 +7,7 @@ import { userReducer } from "./reducers/userReducer";
 const reducer = combineReducers({
   meals: mealReducer,
   mealDetail: mealDetailReducer,
-  userReducer: userReducer,
+  user: userReducer,
 });
 
 let initalState = {};

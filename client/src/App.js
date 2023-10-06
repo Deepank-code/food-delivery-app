@@ -14,6 +14,7 @@ import { loaduser } from "./actions/userAction";
 import UserOptions from "./component/layout/Header/UserOptions.js";
 import Profile from "./component/User/Profile.js";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
+import UpdateProfile from "./component/User/UpdateProfile";
 
 function App() {
   useEffect(() => {
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/search" Component={Search} />
           <Route exact path="/account" Component={Profile} />
           <Route exact path="/login" Component={LoginSignup} />
+          <Route exact path="/profile/update" Component={UpdateProfile} />
         </Routes>
         <Footer />
       </Router>

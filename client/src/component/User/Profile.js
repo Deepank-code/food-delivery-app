@@ -6,9 +6,7 @@ import "./profile.css";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { user, loading, isAuthenticated, error } = useSelector(
-    (state) => state.user
-  );
+  const { user, loading, isAuthenticated } = useSelector((state) => state.user);
   console.log(user);
   useEffect(() => {
     if (isAuthenticated === false) {

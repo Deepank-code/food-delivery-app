@@ -46,7 +46,7 @@ const userSchema = new Schema(
 );
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
-    return next();
+    next();
   }
   this.password = await bcrypt.hash(this.password, 10);
 });
@@ -67,8 +67,8 @@ userSchema.methods = {
       }
     );
   },
-  comparePassword: async function (recivedPassword) {
-    return await bcrypt.compare(recivedPassword, this.password);
+  comparePassword: async function (plainPassword) {
+    return await bcrypt.compare(plainPassword, this.password);
   },
 
   generatePasswordresetToken: async function () {

@@ -7,15 +7,18 @@ const getAllMeals = async (req, res, next) => {
   const mealCount = await Meal.countDocuments();
   const apifeatures = new ApiFeatures(Meal.find({}), req.query)
     .search()
-    .filter()
-    .pagination(resultPerPage);
-  const allMeals = await apifeatures.query;
+    .filter();
 
+  apifeatures.pagination(resultPerPage);
+  let allMeals = await apifeatures.query;
+  const filteredmealsCount = allMeals.length;
   res.status(200).json({
     success: true,
     message: "All Meals are successfully found",
     allMeals,
     mealCount,
+    resultPerPage,
+    filteredmealsCount,
   });
 };
 

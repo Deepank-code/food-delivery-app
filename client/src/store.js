@@ -3,11 +3,12 @@ import thunk from "redux-thunk";
 
 import { composeWithDevTools } from "redux-devtools-extension";
 import { mealReducer, mealDetailReducer } from "./reducers/mealReducers";
-import { userReducer } from "./reducers/userReducer";
+import { profileReducer, userReducer } from "./reducers/userReducer";
 const reducer = combineReducers({
   meals: mealReducer,
   mealDetail: mealDetailReducer,
   user: userReducer,
+  profile: profileReducer,
 });
 
 let initalState = {};

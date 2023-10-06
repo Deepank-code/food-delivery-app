@@ -13,6 +13,10 @@ import {
   CLEAR_ERRORS,
   UPDATE_PROFILE_REQUEST,
   UPDATE_PROFILE_FAIL,
+  UPDATE_PROFILE_SUCCESS,
+  UPDATE_PASSWORD_REQUEST,
+  UPDATE_PASSWORD_FAIL,
+  UPDATE_PASSWORD_SUCCESS,
 } from "../constant/userConstant";
 import axios from "axios";
 
@@ -81,15 +85,31 @@ export const updateProfile = (userdata) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PROFILE_REQUEST });
     const config = { headers: { "Context-type": "multipart/form-data" } };
-    const { data } = await axios.post(
-      "/api/v1/user/update_profile",
+    const { data } = await axios.put(
+      "/api/v1/user/profile/update",
       userdata,
       config
     );
-    dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
+    dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data.success });
   } catch (error) {
     dispatch({
       type: UPDATE_PROFILE_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+export const updatePassword = (passworddata) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_PASSWORD_REQUEST });
+
+    const { data } = await axios.put(
+      "/api/v1/user/profile/update",
+      passworddata
+    );
+    dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: data.success });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PASSWORD_FAIL,
       payload: error.response.data.message,
     });
   }

@@ -83,7 +83,8 @@ const signin = async (req, res, next) => {
       return next(new AppError("All fields are required!!!", 401));
     }
     const user = await User.findOne({ email }).select("+password");
-    if (!user || !user.comparePassword(password)) {
+    console.log(await user.comparePassword(password));
+    if (!(user && (await user.comparePassword(password)))) {
       return next(new AppError("Email and password does't match"), 400);
     }
 
@@ -201,25 +202,30 @@ const reset = async (req, res, next) => {
 };
 //change password
 const changePassword = async (req, res, next) => {
-  const { old_password, new_password } = req.body;
+  const { oldPassword, newPassword, confirmPassword } = req.body;
+
   const { id } = req.user;
 
-  if (!old_password || !new_password) {
+  if (!oldPassword || !newPassword) {
     return next(new AppError("Please enter your old and new password!!", 400));
   }
 
-  const user = await User.findById(user_id).select("+password");
+  const user = await User.findById(id).select("+password");
   if (!user) {
     return next(new AppError("user does't exist", 400));
   }
-
-  const isPasswordValid = await user.comparePassword(old_password);
-  if (!isPasswordValid) {
-    return next(new AppError("Invalid Password", 400));
+  if (newPassword !== confirmPassword) {
+    return next(new AppError("password does not match", 400));
   }
 
-  user.password = new_password;
-  await user.save;
+  const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
+
+  if (!isPasswordMatched) {
+    return next(new AppError("Old password is incorrect", 400));
+  }
+
+  user.password = newPassword;
+  await user.save();
   user.password = undefined;
   res.status(200).json({
     success: true,
@@ -244,8 +250,8 @@ const updateProfile = async (req, res, next) => {
     try {
       const result = await cloudinary.v2.uploader.upload(req.file.path, {
         folder: "foodDeliveryapp",
-        width: 250,
-        height: 250,
+        width: 200,
+        height: 200,
         gravity: "faces",
         crop: "fill",
       });
@@ -380,4 +386,5 @@ export {
   getSingleUser,
   updateUserRole,
   deleteUser,
+  logout,
 };

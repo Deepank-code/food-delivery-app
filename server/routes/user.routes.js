@@ -5,6 +5,7 @@ import {
   getProfile,
   forget,
   reset,
+  logout,
   changePassword,
   updateProfile,
   getAllUser,
@@ -22,13 +23,14 @@ router.get("/profile", isLoggedin, getProfile);
 
 router.post("/reset", forget);
 router.post("/reset/:resetToken", reset);
-router.post("change-password", changePassword);
-router.post(
-  "update_profile",
+router.post("/password/update", isLoggedin, changePassword);
+router.put(
+  "/profile/update",
   upload.single("avatar"),
   isLoggedin,
   updateProfile
 );
+router.route("/logout").get(logout);
 router.get("/admin/all_user", isLoggedin, authorizedRoles("ADMIN"), getAllUser);
 router
   .route("/admin/cx/:id")

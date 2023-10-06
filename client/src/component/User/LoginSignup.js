@@ -7,9 +7,10 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useSelector, useDispatch } from "react-redux";
 import { login, register, clearErrors } from "../../actions/userAction";
 import Loader from "../layout/Loader/Loader.js";
-import Alert from "@mui/material/Alert";
+import { useAlert } from "react-alert";
 
 const LoginSignup = () => {
+  const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loading, isAuthenticated, error } = useSelector(
@@ -58,6 +59,8 @@ const LoginSignup = () => {
           setAvatar(reader.result);
         }
       };
+
+      reader.readAsDataURL(e.target.files[0]);
     } else {
       setUser({ ...user, [e.target.name]: e.target.value });
     }
@@ -79,13 +82,14 @@ const LoginSignup = () => {
   };
   useEffect(() => {
     if (error) {
-      // <Alert severity="error">hello</Alert>;
-      // dispatch(clearErrors());
+      alert.error(error);
+      dispatch(clearErrors());
     }
+
     if (isAuthenticated) {
       navigate("/account");
     }
-  }, [dispatch, loading, navigate]);
+  }, [dispatch, loading, navigate, error]);
 
   return (
     <>

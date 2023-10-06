@@ -85,14 +85,14 @@ export default function UserOptions({ user }) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => navigate("/account")}>
           <Avatar
             src={
               user &&
               (user.avatar.secure_url ? user.avatar.secure_url : "/Profile.png")
               // user.avatar.secure_url ? user.avatar.secure_url : "/Profile.png"
             }
-          />{" "}
+          />
           Profile
         </MenuItem>
         {/* {user && user.role === "ADMIN" && (

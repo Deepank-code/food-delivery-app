@@ -15,6 +15,9 @@ import {
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_RESET,
   UPDATE_PROFILE_FAIL,
+  UPDATE_PASSWORD_REQUEST,
+  UPDATE_PASSWORD_FAIL,
+  UPDATE_PASSWORD_SUCCESS,
 } from "../constant/userConstant";
 
 export const userReducer = (state = { user: {} }, action) => {
@@ -77,24 +80,21 @@ export const userReducer = (state = { user: {} }, action) => {
 export const profileReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case UPDATE_PROFILE_REQUEST:
-      return {
-        loading: true,
-        isAuthenticated: false,
-      };
+    case UPDATE_PASSWORD_REQUEST:
+      return { ...state, loading: true };
     case UPDATE_PROFILE_SUCCESS:
+    case UPDATE_PASSWORD_SUCCESS:
       return {
         ...state,
         loading: false,
-        isAuthenticated: true,
-        user: action.payload,
+        isUpdated: action.payload,
       };
 
     case UPDATE_PROFILE_FAIL:
+    case UPDATE_PASSWORD_FAIL:
       return {
         ...state,
         loading: false,
-        isAuthenticated: false,
-        user: null,
         error: action.payload,
       };
     case UPDATE_PROFILE_RESET:

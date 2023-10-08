@@ -10,12 +10,12 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg ">
       <div className="container-fluid">
         <div className="logo-div">
-          <a className="navbar-brand " href="#">
+          <Link className="navbar-brand " to="/">
             <img
               className="logo-img"
               src="https://w7.pngwing.com/pngs/894/279/png-transparent-online-food-ordering-food-delivery-grubhub-others-food-service-logo-thumbnail.png"
             />
-          </a>
+          </Link>
           <h3>Let's Eat</h3>
         </div>
 
@@ -34,11 +34,6 @@ const Header = () => {
           <div className="links d-flex justify-content-space-between">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link className="nav-link" to="/meals">
                   Meals
                 </Link>
@@ -46,6 +41,11 @@ const Header = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/search">
                   Search
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/cart">
+                  My Cart
                 </Link>
               </li>
               <li className="nav-item dropdown">
@@ -56,7 +56,7 @@ const Header = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Dropdown link
+                  more..
                 </a>
                 <ul className="dropdown-menu">
                   <li>

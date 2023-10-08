@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Caurosel from "react-material-ui-carousel";
 import { getMealDetail } from "../../actions/mealAction";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,7 +7,11 @@ import "./mealDetail.css";
 import ReactStars from "react-rating-stars-component";
 import ReviewCard from "./ReviewCard";
 import Loader from "../layout/Loader/Loader";
+import { addItemsToCart } from "../../actions/cartAction";
+import { useAlert } from "react-alert";
+
 const MealDetails = () => {
+  const alert = useAlert();
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -19,6 +23,20 @@ const MealDetails = () => {
     activeColor: "tomato",
     value: meal.ratings,
     isHalf: true,
+  };
+  const [quantity, setQuantity] = useState(1);
+
+  const increaseQuantity = () => {
+    if (meal.Stock <= quantity) return;
+    setQuantity(quantity + 1);
+  };
+  const decreaseQuantity = () => {
+    if (quantity <= 1) return;
+    setQuantity(quantity - 1);
+  };
+  const addToCartHandler = () => {
+    dispatch(addItemsToCart(id, quantity));
+    alert.success("Items Added to cart");
   };
   useEffect(() => {
     dispatch(getMealDetail(id));
@@ -62,11 +80,11 @@ const MealDetails = () => {
                 <h1>RS {meal.price}</h1>
                 <div className="details-block3-1">
                   <div className="details-block3-1-1">
-                    <button>-</button>
-                    <input value="1" type="number" />
-                    <button>+</button>
+                    <button onClick={decreaseQuantity}>-</button>
+                    <input value={quantity} type="number" readOnly />
+                    <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button>Add to Cart</button>
+                  <button onClick={addToCartHandler}>Add to Cart</button>
                 </div>
                 <p>
                   Status:

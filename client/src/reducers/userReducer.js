@@ -17,6 +17,7 @@ import {
   UPDATE_PROFILE_FAIL,
   UPDATE_PASSWORD_REQUEST,
   UPDATE_PASSWORD_FAIL,
+  UPDATE_PASSWORD_RESET,
   UPDATE_PASSWORD_SUCCESS,
 } from "../constant/userConstant";
 
@@ -98,6 +99,7 @@ export const profileReducer = (state = { user: {} }, action) => {
         error: action.payload,
       };
     case UPDATE_PROFILE_RESET:
+    case UPDATE_PASSWORD_RESET:
       return {
         ...state,
         isUpdated: false,

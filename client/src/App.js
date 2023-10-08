@@ -15,6 +15,10 @@ import UserOptions from "./component/layout/Header/UserOptions.js";
 import Profile from "./component/User/Profile.js";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
 import UpdateProfile from "./component/User/UpdateProfile";
+import UpdatePassword from "./component/User/UpdatePassword";
+import Cart from "./component/Cart/Cart";
+import Shipping from "./component/Cart/Shipping";
+import ConfirmOrder from "./component/Cart/ConfirmOrder";
 
 function App() {
   useEffect(() => {
@@ -36,9 +40,54 @@ function App() {
           <Route path="/meals/:keyword" Component={Meals} />
 
           <Route exact path="/search" Component={Search} />
-          <Route exact path="/account" Component={Profile} />
+          <Route
+            exact
+            path="/account"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+
           <Route exact path="/login" Component={LoginSignup} />
           <Route exact path="/profile/update" Component={UpdateProfile} />
+          <Route
+            exact
+            path="/password/update"
+            element={
+              <ProtectedRoute>
+                <UpdatePassword />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            exact
+            path="/cart"
+            element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            exact
+            path="/order/confirm"
+            element={
+              <ProtectedRoute>
+                <ConfirmOrder />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            exact
+            path="/shipping"
+            element={
+              <ProtectedRoute>
+                <Shipping />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
         <Footer />
       </Router>

@@ -83,7 +83,7 @@ const signin = async (req, res, next) => {
       return next(new AppError("All fields are required!!!", 401));
     }
     const user = await User.findOne({ email }).select("+password");
-    console.log(await user.comparePassword(password));
+
     if (!(user && (await user.comparePassword(password)))) {
       return next(new AppError("Email and password does't match"), 400);
     }

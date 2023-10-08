@@ -1,18 +1,22 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
 
 import "./ConfirmOrder.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
 import CheckoutSteps from "./CheckOutSteps";
+import { useAlert } from "react-alert";
 
-const cuponsCode = ["Q23RPD", "P23GRS"];
+const cuponsCode = ["Q23RPD", "P23GRS", "hello"];
 
-const ConfirmOrder = ({ history }) => {
+const ConfirmOrder = () => {
+  const navigate = useNavigate();
+  const alert = useAlert();
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const [cupon, setCupon] = useState("");
+  const [discount, setDiscount] = useState(0);
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
     0
@@ -22,7 +26,7 @@ const ConfirmOrder = ({ history }) => {
 
   const tax = subtotal * 0.18;
 
-  const totalPrice = subtotal + tax + shippingCharges;
+  const totalPrice = subtotal + tax + shippingCharges - discount;
 
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
 
@@ -36,7 +40,15 @@ const ConfirmOrder = ({ history }) => {
 
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
-    history.push("/process/payment");
+    navigate("/process/payment");
+  };
+  const canAvailDiscount = (cupon) => {
+    if (cuponsCode.includes(cupon)) {
+      let discountAmount = subtotal * (15 / 100);
+      setDiscount(discountAmount);
+      alert.success("Congrats! you got 15% discount");
+    }
+    setDiscount(0);
   };
 
   return (
@@ -68,11 +80,9 @@ const ConfirmOrder = ({ history }) => {
                 cartItems.map((item) => (
                   <div key={item.product}>
                     <img src={item.image} alt="Product" />
-                    <Link to={`/product/${item.product}`}>
-                      {item.name}
-                    </Link>{" "}
+                    <Link to={`/product/${item.product}`}>{item.name}</Link>
                     <span>
-                      {item.quantity} X ₹{item.price} ={" "}
+                      {item.quantity} X ₹{item.price} =
                       <b>₹{item.price * item.quantity}</b>
                     </span>
                   </div>
@@ -91,8 +101,32 @@ const ConfirmOrder = ({ history }) => {
                 min="6"
                 onChange={(e) => setCupon(e.target.value)}
               />
-              <button>Avail Discount</button>
+              <button onClick={() => canAvailDiscount(cupon)}>
+                Avail Discount
+              </button>
             </div>
+            {discount ? (
+              <p
+                className="discountpara"
+                style={{
+                  fontSize: "0.7em",
+                  textAlign: "start",
+                  padding: "0.5em 0 2em 1em",
+                }}
+              >
+                congratulation!! you got flat 15% off on meals
+              </p>
+            ) : (
+              <p
+                style={{
+                  fontSize: "0.7em",
+                  textAlign: "start",
+                  padding: "0.5em 0 2em 1em",
+                }}
+              >
+                cupon code for 15% off
+              </p>
+            )}
           </div>
           <div className="orderSummary">
             <Typography>Order Summery</Typography>
@@ -108,6 +142,10 @@ const ConfirmOrder = ({ history }) => {
               <div>
                 <p>GST:</p>
                 <span>₹{tax}</span>
+              </div>
+              <div>
+                <p>Discount(15% off)</p>
+                <span>₹{discount}</span>
               </div>
             </div>
 

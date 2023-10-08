@@ -148,6 +148,9 @@
 .orderSummary > button:hover {
   background-color: rgb(192, 71, 50);
 }
+.discountpara {
+  color: #eb5757;
+}
 
 @media screen and (max-width: 600px) {
   .confirmOrderPage {

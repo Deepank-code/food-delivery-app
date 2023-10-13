@@ -53,17 +53,16 @@ const getSingleOrder = async (req, res, next) => {
 };
 //logged in user order
 const myOrder = async (req, res, next) => {
-  console.log(req.user.id);
   try {
-    const order = await Order.find({ user: req.user.id });
+    const orders = await Order.find({ user: req.user.id });
 
-    if (!order) {
+    if (!orders) {
       return next(new AppError("order not found", 400));
     }
 
     res.status(200).json({
       success: true,
-      order,
+      orders,
     });
   } catch (error) {
     return next(new AppError(error.message), 200);

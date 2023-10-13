@@ -5,6 +5,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { mealReducer, mealDetailReducer } from "./reducers/mealReducers";
 import { profileReducer, userReducer } from "./reducers/userReducer";
 import { cartReducer } from "./reducers/cartReducer";
+import { myOrdersReducer, newOrderReducer } from "./reducers/orderReducer";
 
 const reducer = combineReducers({
   meals: mealReducer,
@@ -12,6 +13,8 @@ const reducer = combineReducers({
   user: userReducer,
   profile: profileReducer,
   cart: cartReducer,
+  newOrder: newOrderReducer,
+  myOrders: myOrdersReducer,
 });
 
 let initalState = {

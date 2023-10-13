@@ -1,7 +1,7 @@
 import AppError from "../utils/error.util.js";
 import jwt from "jsonwebtoken";
 
-const isLoggedin = async (req, res, next) => {
+export const isLoggedin = async (req, res, next) => {
   const { token } = req.cookies;
   if (!token) {
     return next(new AppError("unautheticated user,Please login first"), 400);
@@ -13,7 +13,7 @@ const isLoggedin = async (req, res, next) => {
   next();
 };
 
-const authorizedRoles =
+export const authorizedRoles =
   (...roles) =>
   async (req, res, next) => {
     const currentUserRole = req.user.role;
@@ -24,4 +24,5 @@ const authorizedRoles =
     }
     next();
   };
-export { isLoggedin, authorizedRoles };
+// export { isLoggedin, authorizedRoles };
+//

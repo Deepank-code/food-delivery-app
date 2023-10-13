@@ -18,7 +18,7 @@ const orderSchema = Schema({
       type: String,
       required: true,
     },
-    pinCode: {
+    pincode: {
       type: Number,
       required: true,
     },

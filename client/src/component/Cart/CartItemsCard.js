@@ -1,7 +1,7 @@
 import React from "react";
 import "./cartitemcard.css";
 import { Link } from "react-router-dom";
-import { removeItemsToCart } from "../../actions/cartAction";
+
 
 const CartItemsCard = ({ item, deleteCartItem }) => {
   return (

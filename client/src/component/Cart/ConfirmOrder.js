@@ -8,7 +8,15 @@ import { Typography } from "@mui/material";
 import CheckoutSteps from "./CheckOutSteps";
 import { useAlert } from "react-alert";
 
-const cuponsCode = ["Q23RPD", "P23GRS", "hello"];
+const cuponsCode = [
+  "Q23RPD",
+  "P23GRS",
+  "GRNC2S",
+  "23TYAS",
+  "GRSSS1",
+  "LETS12",
+  "hello",
+];
 
 const ConfirmOrder = () => {
   const navigate = useNavigate();
@@ -47,10 +55,11 @@ const ConfirmOrder = () => {
       let discountAmount = subtotal * (15 / 100);
       setDiscount(discountAmount);
       alert.success("Congrats! you got 15% discount");
+    } else {
+      setDiscount(0);
     }
-    setDiscount(0);
   };
-
+  useEffect(() => {}, [discount]);
   return (
     <Fragment>
       <CheckoutSteps activeStep={1} />
